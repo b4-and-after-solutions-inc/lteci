@@ -13,6 +13,7 @@
 <meta name="application-name" content="LTECI">
 
 <!-- TODO Change href of Local Import of CSS and JS -->
+<!-- TODO Remove Online CDN Stuff, Local lang -->
 <!-- LINKS Start -->
 <?php
 if($this->config->item('local_import')) { ?>
