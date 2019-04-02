@@ -1,9 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$config['base_url'] = '';
+/* - Custom Config -
+| Set to TRUE to Load CSS/JS from Assets
+| Set to FALSE to Load CSS/JS Online/CDN
+*/
+$config['local_import'] = FALSE;
 
-$config['index_page'] = 'index.php';
+$config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/lteci';
+
+$config['index_page'] = '';
 
 $config['uri_protocol']	= 'REQUEST_URI';
 

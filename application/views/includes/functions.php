@@ -1,48 +1,13 @@
 <?php
 
-$DebugMode = false;
-$LocalImport = false;
-
-function pageTitle ($Title, $Description) {
-	echo "
-	<h1>$Title
-	<section class='content-header'>
-	<small>$Description</small>
-	</h1>
-	";
-}
-
-/* Use this to Hide/Show Some Elements for Debugging/Release */
-function debugHidden () {
-	if (!$GLOBALS['DebugMode']) {
-		echo "hidden";
-	}
-}
-
 /* For Highlighting Menu. $keyword must be found at current PHP File */
 function menu($keyword) {
-	
+
 	if (strpos(basename($_SERVER['PHP_SELF']), $keyword) !== false) {
     echo "class=\"active\"";
 	} else {
 		echo "";
 	}
-}
-
-function createMessage ($messageAction, $messageStatus, $messageItem) {
-	
-	if ($messageStatus == "fail") {
-		$messageResult = "Failed to $messageAction $messageItem.";
-	}
-	else if ($messageStatus == "success") {
-		
-	if ($messageAction == "update") $messageAction = "updated";
-	if ($messageAction == "add") $messageAction = "added";
-		
-		$messageResult = "Succesfully $messageAction $messageItem";
-	}
-
-	return $messageResult;
 }
 
 function convertRole ($role) {
@@ -55,29 +20,29 @@ function convertRole ($role) {
 function updateSync ($ID, $Table) {
 	date_default_timezone_set('Asia/Manila');
 	$date = date("Y-m-d H:i:s");
-	
+
 	$insertedID = "0";
 	if($ID == "0") {
 		$insertedID = mysqli_insert_id($GLOBALS['connect']);
 		$ID = $insertedID;
 	}
-	
+
 	$query = "UPDATE $Table SET updateddate = '$date' WHERE id = $ID";
 	$result = mysqli_query($GLOBALS['connect'], $query);
 
 	return $result;
-	
+
 }
 
 function validate ($data) {
 	$data = htmlspecialchars($data);
 	$data = mysqli_real_escape_string($GLOBALS['connect'], $data);
-	
+
 	return $data;
 }
 
 function showAlert ($alertStatus, $alertContent) {
-	
+
 	switch ($alertStatus) {
 		case "fail":  $alertType = "alert-danger";  $alertIcon = "ban";     break;
 		case "info":    $alertType = "alert-info";    $alertIcon = "info";    break;

@@ -9,9 +9,10 @@ class Access extends CI_Controller
 		$this->load->view('welcome_message');
 	}
 
-	public function login()
+	public function test()
 	{
-
+		$this->load->view('includes/cihead');
+		$this->load->view('includes/cifoot');
 	}
 
 }

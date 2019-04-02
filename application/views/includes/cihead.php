@@ -7,14 +7,15 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>GMT</title>
+<title>LTE CI</title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-<meta name="author" content="GMT">
-<meta name="application-name" content="GMT NK">
+<meta name="author" content="JDC, GMT, FDRL">
+<meta name="application-name" content="LTECI">
 
+<!-- TODO Change href of Local Import of CSS and JS -->
 <!-- LINKS Start -->
 <?php
-if($LocalImport) { ?>
+if($this->config->item('local_import')) { ?>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/ionicons.min.css">
@@ -46,7 +47,7 @@ if($LocalImport) { ?>
 
 <!-- SCRIPTS Start -->
 <?php
-if($LocalImport) { ?>
+if($this->config->item('local_import')) { ?>
 <script src="js/jquery.min.js"></script>
 
 <script src="js/bootstrap.min.js"></script>
@@ -70,8 +71,8 @@ if($LocalImport) { ?>
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
 <!--<script src="js/select2.full.min.js"></script>-->
@@ -89,6 +90,7 @@ if($LocalImport) { ?>
 <?php } ?>
 
 <script>
+// NOTE What is this shit?
 function logOut() {
 	$.get("loginQuery.php?logout", function( data ) {
 		if(data["status"] == "true") {
@@ -105,15 +107,15 @@ function logOut() {
 <div class="wrapper">
 
 <!-- HEADER Start -->
-<?php
-if($_SESSION[$WebsiteName] == null)
-	header("location: login.php");
+<?php // TODO Create Session Redirect when No User was Logged In
+// if($_SESSION[$WebsiteName] == null)
+// 	header("location: login.php");
 ?>
 
 <header class="main-header">
 	<a href="index.php" class="logo">
-		<span class="logo-mini"><b>GMT</b></span>
-		<span class="logo-lg"><b>GMT</b> NK</span>
+		<span class="logo-mini"><b>LTE</b></span>
+		<span class="logo-lg"><b>LTE</b> CI</span>
 	</a>
 
 	<nav class="navbar navbar-static-top" role="navigation">
@@ -125,22 +127,23 @@ if($_SESSION[$WebsiteName] == null)
 				<ul class="nav navbar-nav">
 				<li class="dropdown user user-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="<?=$_SESSION[$WebsiteName]['Picture'];?>" class="user-image" alt="User Image">
-						<span class="hidden-xs"><?=$_SESSION[$WebsiteName]['Name'];?></span>
+						<img src="<?php echo base_url('assets/img/users/'); ?>JDC.png" class="user-image" alt="User Image">
+						<span class="hidden-xs">Temporary Name</span><!-- TODO Change to Logged In Name -->
 					</a>
-					
+
 				<ul class="dropdown-menu">
 					<li class="user-header">
-						<img src="<?=$_SESSION[$WebsiteName]['Picture'];?>" class="img-circle" alt="User Image">
-						<p><?=$_SESSION[$WebsiteName]['Name'];?> <small><?=convertRole($_SESSION[$WebsiteName]['Role']);?></small></p>
+						<img src="<?php echo base_url('assets/img/users/'.'JDC.png'); ?>" class="img-circle" alt="User Image">
+						<p>Temporary Name <small>Temporary User</small></p><!-- TODO Change User Information to get via SESSION -->
 					</li>
-					
+
 					<li class="user-footer">
 					<div class="pull-left">
 					<a href="#" class="btn btn-default btn-flat">Profile</a>
 					</div>
 					<div class="pull-right">
 					<a onclick="logOut()" class="btn btn-default btn-flat">Sign out</a>
+          <!-- TODO Change onclick Function -->
 					</div>
 					</li>
 				</ul>
@@ -156,10 +159,10 @@ if($_SESSION[$WebsiteName] == null)
 <aside class="main-sidebar">
 	<section class="sidebar">
 		<ul class="sidebar-menu" data-widget="tree">
-		<li class="header">MAIN MENU</li>
-		<li <?=menu("index");?>><a href="index.php"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-		<li <?=menu("properties");?>><a href="properties.php"><i class="glyphicon glyphicon-home"></i> <span>Properties</span></a></li>
-		<li <?=menu("tenants");?>><a href="tenants.php"><i class="fa fa-users"></i> <span>Tenants</span></a></li>
+		<li class="header">MAIN MENU</li><!-- TODO Dynamic Highlighting of Menu -->
+		<li class="active"><a href="index.php"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+		<li><a href="properties.php"><i class="glyphicon glyphicon-home"></i> <span>Properties</span></a></li>
+		<li><a href="tenants.php"><i class="fa fa-users"></i> <span>Tenants</span></a></li>
 		<li><a href="transactions.php"><i class="fa fa-money"></i> <span>Transactions</span></a></li>
 		</ul>
 	</section>
@@ -169,7 +172,10 @@ if($_SESSION[$WebsiteName] == null)
 <div class="content-wrapper">
 
 <section class="content-header">
-<?php pageTitle("Dashboard", ""); ?>
+	<h1>$Title <!-- TODO Change to Dynamic Title -->
+	<section class='content-header'>
+	<small>$Description</small><!-- TODO Change to Dynamic Description -->
+	</h1>
 	<ol class="breadcrumb">
 		<li class="active"><a href="index.php"> Dashboard</a></li>
 	</ol>
