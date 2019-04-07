@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Access extends CI_Controller
 {
-
+	// TODO Testing
 	public function index()
 	{
 		$this->load->view('welcome_message');
