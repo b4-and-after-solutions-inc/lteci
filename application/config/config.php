@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Set to TRUE to Load CSS/JS from Assets
 | Set to FALSE to Load CSS/JS Online/CDN
 */
-$config['local_import'] = FALSE;
+$config['local_import'] = TRUE;
 
 $config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/lteci';
 

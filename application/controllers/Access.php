@@ -11,7 +11,9 @@ class Access extends CI_Controller
 
 	public function test()
 	{
-		$this->load->view('includes/cihead');
+		$cihead['Title'] = 'Some Title'; $cihead['Description'] = 'Some Description';
+		
+		$this->load->view('includes/cihead', $cihead);
 		$this->load->view('includes/cifoot');
 	}
 
