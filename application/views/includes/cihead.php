@@ -7,10 +7,10 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>LTE CI</title>
+<title><?=$this->config->item('website_name');?></title>
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <meta name="author" content="JDC, GMT, FDRL">
-<meta name="application-name" content="LTECI">
+<meta name="application-name" content="<?=$this->config->item('website_name');?>">
 
 <!-- LINKS Start -->
 
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/font-awesome.min.css">
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/select2.min.css">
+<link rel="stylesheet" href="<?=base_url('assets/');?>css/select2.min.css">
 
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/AdminLTE.min.css">
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/skin-black-light.css">
@@ -49,12 +49,12 @@
 
 <script>
 // NOTE What is this shit?
-function logOut() {
-	$.get("loginQuery.php?logout", function( data ) {
-		if(data["status"] == "true") {
-			window.location = "index.php?logout";
-		}
-	});
+function logOut() { // TODO LogOut Session Destroy (?) Functionality and Redirect to Login
+	//$.get("loginQuery.php?logout", function( data ) {
+	//	if(data["status"] == "true") {
+			window.location = "<?=base_url('access/login/');?>";
+	//	}
+	//});
 }
 </script>
 
@@ -72,9 +72,9 @@ function logOut() {
 ?>
 
 <header class="main-header">
-	<a href="index.php" class="logo">
-		<span class="logo-mini"><b>LTE</b></span>
-		<span class="logo-lg"><b>LTE</b> CI</span>
+	<a href="<?=base_url();?>" class="logo">
+		<span class="logo-mini"><b><?=$this->config->item('website_big');?></b></span>
+		<span class="logo-lg"><b><?=$this->config->item('website_big');?></b><?=$this->config->item('website_small');?></span>
 	</a>
 
 	<nav class="navbar navbar-static-top" role="navigation">
@@ -119,10 +119,10 @@ function logOut() {
 	<section class="sidebar">
 		<ul class="sidebar-menu" data-widget="tree">
 		<li class="header">MAIN MENU</li><!-- TODO Dynamic Highlighting of Menu -->
-		<li class="active"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-		<li><a href="<?=base_url();?>"><i class="glyphicon glyphicon-home"></i> <span>Properties</span></a></li>
-		<li><a href="<?=base_url();?>tenants.php"><i class="fa fa-users"></i> <span>Tenants</span></a></li>
-		<li><a href="<?=base_url();?>transactions.php"><i class="fa fa-money"></i> <span>Transactions</span></a></li>
+		<li class="<?=($Menu1=='Dashboard'?'active':'');?>"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+		<li><a href="<?=base_url();?>"><i class="glyphicon glyphicon-home"></i> <span>XXX</span></a></li>
+		<li><a href="<?=base_url();?>"><i class="fa fa-users"></i> <span>YYY</span></a></li>
+		<li><a href="<?=base_url();?>"><i class="fa fa-money"></i> <span>ZZZ</span></a></li>
 		</ul>
 	</section>
 </aside>
@@ -135,9 +135,12 @@ function logOut() {
 	<section class='content-header'>
 	<small><?=$Description;?></small>
 	</h1>
+	<!-- TODO Dynamic Breadcrumb -->
+	<!--
 	<ol class="breadcrumb">
 		<li class="active"><a href="index.php"> Dashboard</a></li>
 	</ol>
+-->
 </section>
 
 <section class="content container-fluid">
