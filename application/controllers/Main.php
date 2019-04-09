@@ -12,9 +12,4 @@ class Main extends CI_Controller
 		$this->load->view('includes/cifoot');
   }
 
-  public function felmar_testing()
-  {
-    echo "Felmar Test";
-  }
-
 }
