@@ -1,17 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Apr 02, 2019 at 09:05 AM
--- Server version: 5.7.19
--- PHP Version: 5.6.31
+-- Host: 127.0.0.1
+-- Generation Time: Apr 09, 2019 at 08:56 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
---
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,235 +23,114 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_admin`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `tbl_admin`;
-CREATE TABLE IF NOT EXISTS `tbl_admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) DEFAULT NULL,
-  `password` varchar(200) DEFAULT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `mi` varchar(10) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `contact` varchar(50) DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL,
-  `email_address` varchar(255) DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`admin_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL,
+  `title` varchar(250) DEFAULT NULL,
+  `first` varchar(250) DEFAULT NULL,
+  `middle` varchar(250) DEFAULT NULL,
+  `last` varchar(250) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `number_shipped` varchar(250) DEFAULT NULL,
+  `order_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_branch`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `tbl_branch`;
-CREATE TABLE IF NOT EXISTS `tbl_branch` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `business_id` int(11) DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `part_number` varchar(250) DEFAULT NULL,
+  `product_label` varchar(250) DEFAULT NULL,
+  `starting_inventory` varchar(250) DEFAULT NULL,
+  `inventory_received` varchar(250) DEFAULT NULL,
+  `inventory_shipped` varchar(250) DEFAULT NULL,
+  `inventory_onhand` varchar(250) DEFAULT NULL,
+  `minimum_required` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_business`
+-- Table structure for table `purchases`
 --
 
-DROP TABLE IF EXISTS `tbl_business`;
-CREATE TABLE IF NOT EXISTS `tbl_business` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `business_name` varchar(255) DEFAULT NULL,
-  `business_logo` varchar(200) DEFAULT NULL,
-  `admin_id` int(11) DEFAULT NULL,
-  `contact` varchar(50) DEFAULT NULL,
-  `location` varchar(255) DEFAULT NULL,
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+CREATE TABLE `purchases` (
+  `id` int(11) NOT NULL,
+  `supplier_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `number_received` varchar(250) DEFAULT NULL,
+  `purchase_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category`
+-- Table structure for table `suppliers`
 --
 
-DROP TABLE IF EXISTS `tbl_category`;
-CREATE TABLE IF NOT EXISTS `tbl_category` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(250) DEFAULT NULL,
-  `business_id` int(11) DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL,
+  `supplier_name` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Table structure for table `tbl_delivery`
+-- Indexes for dumped tables
 --
 
-DROP TABLE IF EXISTS `tbl_delivery`;
-CREATE TABLE IF NOT EXISTS `tbl_delivery` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) DEFAULT NULL,
-  `quantity` double DEFAULT NULL,
-  `capital_per_pack` decimal(10,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `tbl_delivery_transaction`
+-- Indexes for table `products`
 --
-
-DROP TABLE IF EXISTS `tbl_delivery_transaction`;
-CREATE TABLE IF NOT EXISTS `tbl_delivery_transaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `business_id` int(11) DEFAULT NULL,
-  `remarks` varchar(255) DEFAULT NULL,
-  `delivery_id` int(11) DEFAULT NULL,
-  `personnel_id` int(11) DEFAULT NULL,
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `tbl_item`
+-- Indexes for table `purchases`
 --
-
-DROP TABLE IF EXISTS `tbl_item`;
-CREATE TABLE IF NOT EXISTS `tbl_item` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_name` varchar(250) DEFAULT NULL,
-  `business_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `item_type` varchar(250) DEFAULT NULL,
-  `current_stock` varchar(250) DEFAULT NULL,
-  `status` varchar(250) DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+ALTER TABLE `purchases`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `tbl_item_details`
+-- Indexes for table `suppliers`
 --
-
-DROP TABLE IF EXISTS `tbl_item_details`;
-CREATE TABLE IF NOT EXISTS `tbl_item_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) DEFAULT NULL,
-  `capital_per_pack` decimal(10,2) DEFAULT NULL,
-  `pieces_per_pack` double DEFAULT NULL,
-  `cost_per_piece` decimal(10,2) DEFAULT NULL,
-  `previous_inventory` double DEFAULT NULL,
-  `ending_inventory` double DEFAULT NULL,
-  `discrepancy` double DEFAULT NULL,
-  `delivery_from_outside` double DEFAULT NULL,
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Table structure for table `tbl_item_transaction`
+-- AUTO_INCREMENT for dumped tables
 --
 
-DROP TABLE IF EXISTS `tbl_item_transaction`;
-CREATE TABLE IF NOT EXISTS `tbl_item_transaction` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `item_id` int(11) DEFAULT NULL,
-  `over_short_sales` decimal(10,2) DEFAULT NULL,
-  `reported_total_sales` double DEFAULT NULL,
-  `report_date` datetime DEFAULT NULL,
-  `personnel_id` int(11) DEFAULT NULL,
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
 --
--- Table structure for table `tbl_logs`
+-- AUTO_INCREMENT for table `orders`
 --
-
-DROP TABLE IF EXISTS `tbl_logs`;
-CREATE TABLE IF NOT EXISTS `tbl_logs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `personnel_id` int(11) DEFAULT NULL,
-  `logs_datetime` datetime DEFAULT NULL,
-  `action` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Table structure for table `tbl_personnel`
+-- AUTO_INCREMENT for table `products`
 --
-
-DROP TABLE IF EXISTS `tbl_personnel`;
-CREATE TABLE IF NOT EXISTS `tbl_personnel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(200) DEFAULT NULL,
-  `password` varchar(200) DEFAULT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `MI` varchar(10) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `contact` varchar(50) DEFAULT NULL,
-  `gender` varchar(10) DEFAULT NULL,
-  `email_address` varchar(255) DEFAULT NULL,
-  `isactive` bit(1) NOT NULL DEFAULT b'1',
-  `createdby_id` int(11) DEFAULT NULL,
-  `created_datetime` datetime DEFAULT NULL,
-  `updatedby_id` int(11) DEFAULT NULL,
-  `updated_datetime` datetime DEFAULT NULL,
-  `business_id` int(11) DEFAULT NULL,
-  `branch_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-COMMIT;
-
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `purchases`
+--
+ALTER TABLE `purchases`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
