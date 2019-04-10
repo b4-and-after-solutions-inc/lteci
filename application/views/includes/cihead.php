@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/font-awesome.min.css">
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/ionicons.min.css">
 
-<link rel="stylesheet" href="css/select2.min.css">
+<link rel="stylesheet" href="<?=base_url('assets/');?>css/select2.min.css">
 
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/AdminLTE.min.css">
 <link rel="stylesheet" href="<?=base_url('assets/');?>css/skin-black-light.css">
