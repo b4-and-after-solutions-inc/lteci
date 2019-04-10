@@ -6,6 +6,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Set to FALSE to Load CSS/JS Online/CDN
 */
 $config['local_import'] = TRUE;
+$config['website_name'] = 'LTE CI';
+$config['website_big'] = 'LTE';
+$config['website_small'] = ' CI';
 
 $config['base_url'] = 'http://'.$_SERVER["SERVER_NAME"].'/lteci';
 
