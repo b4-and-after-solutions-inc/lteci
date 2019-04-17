@@ -26,16 +26,10 @@ class Access extends CI_Controller
 	public function get_names()
 	{
 		$result = array();
+		$result["draw"] = $this->input->get('draw');
 		$result["data"] = [["3","pelms","boogreet","pboog"],["4","tong","ass","tass"],["5","tata","boorneek","tboor"]];
-		header('Content-Type: application/json');
-		echo json_encode($result);
-	}
-
-	public function get_names_2()
-	{
-		$result = array();
-		$result["data"] = [["6","felmar","llano","pboog"],["7","gyrome","tomas","tass"],["8","darren","comador","tboor"],["9","ej","pascual","ej"],["10","kenn","sagun","kenn"]];
-
+		$result["recordsTotal"] = count($result["data"]);
+		$result["recordsFiltered"] = count($result["data"]);
 		header('Content-Type: application/json');
 		echo json_encode($result);
 	}
