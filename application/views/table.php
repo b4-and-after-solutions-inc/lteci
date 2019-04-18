@@ -38,7 +38,7 @@
 </div>
 
 <script>
-  var url = "<?=base_url('access/user');?>";
+  var url = "<?=base_url('access/users');?>";
   //initialization ng datatable.
   //kapag shinit mo uli kasi to, nadodoble ng declaration
   //bale dapat isang beses mo lang tatawagin as datatable tapos saka mo ieedit yung datatable na yun
@@ -59,7 +59,7 @@
 
   function loadTable () {
     var value = $('#select').val();
-    if(value == 1) url = "<?=base_url('access/get_names');?>";
+    if(value == 1) url = "<?=base_url('access/users');?>";
     mytable.ajax.url(url).load();
   }
 
