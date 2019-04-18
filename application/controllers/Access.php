@@ -26,7 +26,7 @@ class Access extends CI_Controller
 	public function get_names()
 	{
 		$result = array();
-		$result["draw"] = $this->input->get('draw');
+		$result["draw"] = $this->input->post('draw');
 		$result["data"] = [["3","pelms","boogreet","pboog"],["4","tong","ass","tass"],["5","tata","boorneek","tboor"]];
 		$result["recordsTotal"] = count($result["data"]);
 		$result["recordsFiltered"] = count($result["data"]);
@@ -36,8 +36,8 @@ class Access extends CI_Controller
 
 	public function users(){
 		$result = array();
-		$result["draw"] = $this->input->get('draw');
-		$result["data"] = $this->employee_model->get_user();;
+		$result["draw"] = $this->input->post('draw');
+		$result["data"] = $this->employee_model->get_user();
 		$result["recordsTotal"] = count($result["data"]);
 		$result["recordsFiltered"] = count($result["data"]);
 		header('Content-Type: application/json');

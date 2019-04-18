@@ -9,9 +9,23 @@ class employee_model extends CI_Model {
   }
 
   public function get_user(){
-		$query = "SELECT u.id, u.firstname,u.lastname,u.username, b.business_name  FROM tbl_user u JOIN tbl_business b ON u.business_id = b.id";
-		$row = $this->db->query($query);
-		return $row->result_array();
+		$sql = "SELECT u.id, u.firstname,u.lastname,u.username, b.business_name  FROM tbl_user u JOIN tbl_business b ON u.business_id = b.id";
+		$query = $this->db->query($sql);
+
+    foreach ($query->result_array() as $row)
+    {
+      $result[] = array (
+        $row['id'],
+        $row['firstname'],
+        $row['lastname'],
+        // $row['username'] parang ganito
+        '<button class="btn btn-sm warning" onclick="putaka('.$row["id"].')"><i class="fa fa-view"></i> Butchtaw</button>'
+      );
+
+    }
+
+		return $result;
+    // wag ganito felms, kailangan naka array_push
 	}
 
 }
