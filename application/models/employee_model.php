@@ -9,7 +9,7 @@ class employee_model extends CI_Model {
   }
 
   public function get_user(){
-		$query = "SELECT u.id,u.user_name, concat(u.first_name,' ',u.last_name) as Fullname, b.business_name  FROM tbl_user u JOIN tbl_business b ON u.branch_id = b.business_id";
+		$query = "SELECT u.id,u.username, concat(u.firstname,' ',u.lastname) as Fullname, b.business_name  FROM tbl_user u JOIN tbl_business b ON u.business_id = b.id";
 		$row = $this->db->query($query);
 		return $row->result_array();
 	}
