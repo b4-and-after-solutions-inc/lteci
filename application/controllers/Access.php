@@ -34,7 +34,7 @@ class Access extends CI_Controller
 		echo json_encode($result);
 	}
 
-	public function user(){
+	public function users(){
 		$result = array();
 		$result["draw"] = $this->input->get('draw');
 		$result["data"] = $this->employee_model->get_user();;
