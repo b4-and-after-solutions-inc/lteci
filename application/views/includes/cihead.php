@@ -120,9 +120,11 @@ function logOut() { // TODO LogOut Session Destroy (?) Functionality and Redirec
 		<ul class="sidebar-menu" data-widget="tree">
 		<li class="header">MAIN MENU</li><!-- TODO Dynamic Highlighting of Menu -->
 		<li class="<?=($Menu1=='Dashboard'?'active':'');?>"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
-		<li><a href="<?=base_url();?>"><i class="glyphicon glyphicon-home"></i> <span>XXX</span></a></li>
-		<li><a href="<?=base_url();?>"><i class="fa fa-users"></i> <span>YYY</span></a></li>
-		<li><a href="<?=base_url();?>"><i class="fa fa-money"></i> <span>ZZZ</span></a></li>
+		<li class="<?=($Menu1=='Orders'?'active':'');?>"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-shopping-cart"></i> <span>Orders</span></a></li>
+		<li class="<?=($Menu1=='Purchases'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-cart-plus"></i> <span>Purchases</span></a></li>
+		<li class="<?=($Menu1=='Suppliers'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-truck"></i> <span>Suppliers</span></a></li>
+		<li class="<?=($Menu1=='Reports'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-area-chart"></i> <span>Reports</span></a></li>
+		<li class="<?=($Menu1=='Money'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-money"></i> <span>Money</span></a></li>
 		</ul>
 	</section>
 </aside>
