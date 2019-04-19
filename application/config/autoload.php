@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $autoload['packages'] = array();
 
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('database', 'session');
 
 $autoload['drivers'] = array();
 
@@ -51,4 +51,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('employee_model');
+$autoload['model'] = array('access_model', 'employee_model');

@@ -23,18 +23,19 @@ class Access extends CI_Controller
 		$this->load->view('login');
 	}
 
-	public function get_names()
+	function get_names()
 	{
 		$result = array();
 		$result["draw"] = $this->input->post('draw');
-		$result["data"] = [["3","pelms","boogreet","pboog"],["4","tong","ass","tass"],["5","tata","boorneek","tboor"]];
+		$result["data"] = [["1","Perumaruh","Boogreet","Bogtaw"],["4","Tong","Tongkitong","tongonomo"],["5","tata","ratata","tata-e"]];
 		$result["recordsTotal"] = count($result["data"]);
 		$result["recordsFiltered"] = count($result["data"]);
 		header('Content-Type: application/json');
 		echo json_encode($result);
 	}
 
-	public function users(){
+	function users()
+	{
 		$result = array();
 		$result["draw"] = $this->input->post('draw');
 		$result["data"] = $this->employee_model->get_user();
@@ -42,6 +43,12 @@ class Access extends CI_Controller
 		$result["recordsFiltered"] = count($result["data"]);
 		header('Content-Type: application/json');
 		echo json_encode($result);
+	}
+
+	function validatecredentials()
+	{
+		$this->output->set_content_type("application/json")
+		->set_output( json_encode( $this->access_model->validatecredentials( $this->input->post() ) ) );
 	}
 
 }
