@@ -1870,7 +1870,7 @@ abstract class CI_DB_driver {
 			// one of the aliases previously identified? If so,
 			// we have nothing more to do other than escape the item
 			//
-			// NOTE: The ! empty() condition prevents this method
+			// NOTO: The ! empty() condition prevents this method
 			//       from breaking when QB isn't enabled.
 			if ( ! empty($this->qb_aliased_tables) && in_array($parts[0], $this->qb_aliased_tables))
 			{
