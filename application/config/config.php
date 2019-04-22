@@ -72,18 +72,6 @@ $config['log_threshold'] = 0;
 */
 $config['log_path'] = '';
 
-/*
-|--------------------------------------------------------------------------
-| Log File Extension
-|--------------------------------------------------------------------------
-|
-| The default filename extension for log files. The default 'php' allows for
-| protecting the log files via basic scripting, when they are to be stored
-| under a publicly accessible directory.
-|
-| Note: Leaving it blank will default to 'php'.
-|
-*/
 $config['log_file_extension'] = '';
 
 /*
@@ -98,28 +86,10 @@ $config['log_file_extension'] = '';
 */
 $config['log_file_permissions'] = 0644;
 
-/*
-|--------------------------------------------------------------------------
-| Date Format for Logs
-|--------------------------------------------------------------------------
-|
-| Each item that is logged has an associated date. You can use PHP date
-| codes to set your own date formatting
-|
-*/
 $config['log_date_format'] = 'Y-m-d H:i:s';
 
 $config['error_views_path'] = '';
 
-/*
-|--------------------------------------------------------------------------
-| Cache Directory Path
-|--------------------------------------------------------------------------
-|
-| Leave this BLANK unless you would like to set something other than the default
-| application/cache/ directory.  Use a full server path with trailing slash.
-|
-*/
 $config['cache_path'] = '';
 
 /*
@@ -212,39 +182,12 @@ $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
 
-/*
-|--------------------------------------------------------------------------
-| Cookie Related Variables
-|--------------------------------------------------------------------------
-|
-| 'cookie_prefix'   = Set a cookie name prefix if you need to avoid collisions
-| 'cookie_domain'   = Set to .your-domain.com for site-wide cookies
-| 'cookie_path'     = Typically will be a forward slash
-| 'cookie_secure'   = Cookie will only be set if a secure HTTPS connection exists.
-| 'cookie_httponly' = Cookie will only be accessible via HTTP(S) (no javascript)
-|
-| Note: These settings (with the exception of 'cookie_prefix' and
-|       'cookie_httponly') will also affect sessions.
-|
-*/
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;
 
-/*
-|--------------------------------------------------------------------------
-| Standardize newlines
-|--------------------------------------------------------------------------
-|
-| Determines whether to standardize newline characters in input data,
-| meaning to replace \r\n, \r, \n occurrences with the PHP_EOL value.
-|
-| WARNING: This feature is DEPRECATED and currently available only
-|          for backwards compatibility purposes!
-|
-*/
 $config['standardize_newlines'] = FALSE;
 
 $config['global_xss_filtering'] = FALSE;
