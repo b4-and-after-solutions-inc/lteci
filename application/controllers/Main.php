@@ -13,7 +13,7 @@ class Main extends CI_Controller
   }
 
   public function table() {
-    $cihead['Title'] = 'DataTable Test'; $cihead['Description'] = ''; $cihead['Menu1'] = '';
+    $cihead['Title'] = 'DataTable Test'; $cihead['Description'] = ''; $cihead['Menu1'] = 'TableTest';
 
     $this->load->view('includes/cihead', $cihead);
     $this->load->view('table');

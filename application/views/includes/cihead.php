@@ -120,6 +120,7 @@ function logOut() { // TODO LogOut Session Destroy (?) Functionality and Redirec
 		<ul class="sidebar-menu" data-widget="tree">
 		<li class="header">MAIN MENU</li><!-- TODO Dynamic Highlighting of Menu -->
 		<li class="<?=($Menu1=='Dashboard'?'active':'');?>"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span></a></li>
+		<li class="<?=($Menu1=='TableTest'?'active':'');?>"><a href="<?=base_url('main/table');?>"><i class="glyphicon glyphicon-file"></i> <span>Sample Table</span></a></li>
 		<li class="<?=($Menu1=='Orders'?'active':'');?>"><a href="<?=base_url();?>"><i class="glyphicon glyphicon-shopping-cart"></i> <span>Orders</span></a></li>
 		<li class="<?=($Menu1=='Purchases'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-cart-plus"></i> <span>Purchases</span></a></li>
 		<li class="<?=($Menu1=='Suppliers'?'active':'');?>"><a href="<?=base_url();?>"><i class="fa fa-truck"></i> <span>Suppliers</span></a></li>
