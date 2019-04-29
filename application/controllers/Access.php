@@ -27,7 +27,7 @@ class Access extends CI_Controller
 	{
 		$result = array();
 		$result["draw"] = $this->input->post('draw');
-		$result["data"] = [["1","Perumaruh","Boogreet","Bogtaw"],["4","Tong","Tongkitong","tongonomo"],["5","tata","ratata","tata-e"]];
+		$result["data"] = [];
 		$result["recordsTotal"] = count($result["data"]);
 		$result["recordsFiltered"] = count($result["data"]);
 		header('Content-Type: application/json');
