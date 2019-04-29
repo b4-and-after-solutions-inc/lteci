@@ -26,10 +26,6 @@
             </tr>
           </thead>
           <tbody>
-            <td>Shit</td>
-            <td>Ka</td>
-            <td>bobo</td>
-            <td>mo</td>
           </tbody>
         </table>
       </div>
