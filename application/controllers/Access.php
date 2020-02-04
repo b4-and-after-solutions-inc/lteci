@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+// Testing shit kayo
 class Access extends CI_Controller
 {
 
