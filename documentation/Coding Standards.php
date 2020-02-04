@@ -1,3 +1,3 @@
 Butaw
 Bugrit
-Tanga
+Bobo Tanga
